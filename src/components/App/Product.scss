@@ -1,0 +1,48 @@
+
+
+.product{
+
+    display: flex;
+
+    flex-direction: row;
+
+    margin-left: 20vw;
+
+
+}
+
+
+.pricing{
+
+    font-size: 3em;
+    margin-right: 1em;
+
+
+}
+
+.pricing:hover{
+
+    cursor: pointer;
+
+}
+
+.QT, .PRICE{
+
+    font-size: 1.25em;
+    margin-right: 2em;
+
+}
+
+.QTnum, .PRICEnum{
+
+    text-align: center;
+
+}
+
+.addtobasket{
+
+    max-height: 3em;
+    margin-top: 2em;
+
+
+}
