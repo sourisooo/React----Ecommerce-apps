@@ -19,7 +19,7 @@ function Home(){
 
     const redirecthome = () => {
 
-        navigate('/main');
+        navigate('/');
  
      };
  
@@ -27,7 +27,7 @@ function Home(){
      const redirectmain = () => {
  
 
-      navigate('/');
+      navigate('/main');
  
      };
  
@@ -49,7 +49,7 @@ function Home(){
 
         localStorage.removeItem("user");
 
-        navigate('/main');
+        navigate('/');
 
      }
      

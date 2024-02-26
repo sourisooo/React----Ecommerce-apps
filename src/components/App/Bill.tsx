@@ -26,7 +26,7 @@ function Bill(){
 
     const redirectmain = () => {
 
-        navigate('/main');
+        navigate('/');
 
     };
 

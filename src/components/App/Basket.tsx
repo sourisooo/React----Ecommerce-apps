@@ -26,7 +26,7 @@ function Basket(){
 
     const redirecthome = () => {
 
-        navigate('/main');
+        navigate('/');
 
     };
 

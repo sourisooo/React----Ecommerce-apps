@@ -28,14 +28,14 @@ function Beauty(){
 
     const redirecthome = () => {
 
-      navigate('/main');
+      navigate('/');
 
     };
 
 
     const redirectmain = () => {
 
-      navigate('/');
+      navigate('/main');
 
     };
 

@@ -28,7 +28,7 @@ const submit = () =>{
 
     console.log(username);
 
-    navigate('/main');
+    navigate('/');
 
 }
 

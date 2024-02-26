@@ -18,11 +18,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <UserContextProvider> 
     <Routes>
     
-    <Route path="/" element={  <App />} />
+    <Route path="/" element={    <Beauty />} />
 
     <Route path="/basket" element={  <Basket />} />
 
-    <Route path="/main" element={  <Beauty />} />
+    <Route path="/main" element={<App /> } />
 
     <Route path="/bill" element={  <Bill />} />
 
