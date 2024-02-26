@@ -18,6 +18,7 @@ function Bill(){
 
     const {adress, setadress} = useContext(UserContext);
 
+    const usermail = JSON.parse(localStorage.getItem("user"));
 
     const orderproperties = Object.keys(orders);
 
@@ -27,12 +28,14 @@ function Bill(){
 
         navigate('/main');
 
-    }
+    };
+
+   
 
 
     return(
 
-        <div style={{marginLeft:'20vw', marginTop:'20vh'}}>
+        <div style={{marginLeft:'35vw', marginTop:'10vh'}}>
 
         <h1>Thanks you for your support</h1>
 
@@ -42,7 +45,9 @@ function Bill(){
 
             <p>Username: {username}</p>
 
-            <p>Email: {email}</p>
+            {!usermail?.name && (<p>Email: {email}</p>)}
+
+            {usermail?.name && (<p>Email: {usermail.name}</p>)}
 
             <p>Firstname: {fname}</p>
 
@@ -62,7 +67,7 @@ function Bill(){
         <ul>
             {orders.map((order, index) => (
 
-                <li key={index}> {JSON.stringify(order)}</li>
+                <li key={index}> {JSON.stringify(order.id)}</li>
               
             ))}
 

@@ -19,11 +19,14 @@ export function UserContextProvider({children}){
 
     const [adress, setadress] = useState('');
 
+    const [loguser, setloguser] = useState('');
+
+    const [logpass, setlogpass] = useState('');
 
 return (
 
 
-<UserContext.Provider value={{orders, setorders, username, setusername, fname, setfname, lname, setlname, email, setemail, adress, setadress}}>
+<UserContext.Provider value={{orders, setorders, username, setusername, fname, setfname, lname, setlname, email, setemail, adress, setadress, loguser, setloguser, logpass, setlogpass}}>
 
 {children}
 

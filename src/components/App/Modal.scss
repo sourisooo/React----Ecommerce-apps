@@ -1,0 +1,53 @@
+#modalSheet {
+    position: fixed; /* Ensures the element stays fixed in place */
+    top: 50%; /* Positions the top edge halfway down the viewport */
+    left: 50%; /* Positions the left edge halfway across the viewport */
+    transform: translate(-50%, -50%); /* Centers the element horizontally and vertically */
+    z-index: 10; /* Sets the stacking order to appear above other elements */
+    /* Additional styles for the popup content can be added here */
+    width: 75vw;
+    height: 75vh;
+    background-color: rgba(236, 228, 228, 0.836);
+    color:black;
+    border-radius: 1em;
+
+  }
+
+
+    .overlay {
+    /* Styles for the overlay element */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.829); /* Semi-transparent black background */
+    z-index: 9; /* Slightly lower than the popup's z-index */
+  }
+
+
+  .modalcontainer{
+
+    display: flex;
+    flex-direction: row;
+
+
+  }
+
+
+  .addme{
+
+    max-width: 50vw;
+
+
+  }
+
+  .modaldescription{
+
+    max-width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+  }

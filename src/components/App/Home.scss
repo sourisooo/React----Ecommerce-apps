@@ -5,3 +5,39 @@ h1:hover{
 
 
 }
+
+.headercontainer{
+
+
+    display: flex;
+    flex-direction: row;
+    max-width: 20vw;
+
+
+
+}
+
+.productsContainer{
+
+
+    max-width: 70vw;
+    margin-top: 10vh;
+
+
+}
+
+
+.maincontainer{
+
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+li:hover{
+
+    background-color: aqua;
+    border-radius: 1em;
+
+}

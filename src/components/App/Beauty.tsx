@@ -1,17 +1,125 @@
 
 import { useNavigate  } from 'react-router-dom';
 import './Beauty.scss';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from './ContextProvider';
+import products from './products';
+import Modal from './Modal';
 
 
 function Beauty(){
 
+    const {orders, setorders} = useContext(UserContext);
+
     const navigate = useNavigate();
+
+    const [search, setsearch] = useState('');
+
+    const [renderprod, setrenderdeprod] = useState<any>(products);
+
+    const [modal, setmodal] = useState(false);
+
+    const [itemshow, setitemshow] = useState('');
+
+    const usermail = JSON.parse(localStorage.getItem("user"));
+
+    const {email, setemail} = useContext(UserContext);
+
 
     const redirecthome = () => {
 
-        navigate('/');
+      navigate('/main');
 
     };
+
+
+    const redirectmain = () => {
+
+      navigate('/');
+
+    };
+
+
+    const redirectbasket = () => {
+
+      navigate('/basket');
+
+    };
+
+    const redirectbill = () => {
+
+      if((orders.length>0)&&(usermail||email)){     navigate('/bill');} else {alert('Please check your basket or your email')}
+
+
+    };
+
+
+    const redirectsignin = () => {
+
+      navigate('/signin');
+
+    };
+
+    const redirectprofil = () => {
+
+      navigate('/profil');
+
+    };
+
+
+    const change = (e) => {
+
+      e.preventDefault();
+
+      setsearch(e.target.value);
+
+      setrenderdeprod(products.filter(product => {
+
+        return product.title == e.target.value;
+
+        // console.log(product.title, search, product.title == search);
+
+      }));
+
+    console.log(search);
+
+    console.log(products)
+
+
+
+    }
+
+
+    const displayproduct = (e) => {
+
+      console.log('click', e.target.parentElement);
+
+      setitemshow(e.target.parentElement);
+    
+      setmodal(true);
+
+      console.log( document.querySelector('main'));
+
+      const overlay = document.createElement("div"); // Create an overlay element
+      overlay.classList.add("overlay"); // Add the styling class
+
+      document.querySelector('main').appendChild(overlay); // Add the overlay to the body
+
+
+    }
+
+    const logout = () => {
+
+      localStorage.removeItem("user");
+
+      window.location.reload();
+
+    };
+   
+
+    useEffect(() => {
+      displayproduct
+    }, [modal])
 
 
     return(
@@ -37,12 +145,26 @@ function Beauty(){
           <li className="nav-item"><a className="nav-link" href="#">
             <svg className="bi" width="24" height="24"></svg>
           </a></li>
-          <li className="nav-item"><a className="nav-link" href="#">Tour</a></li>
-          <li className="nav-item"><a className="nav-link" href="#">Product</a></li>
-          <li className="nav-item"><a className="nav-link" href="#">Features</a></li>
-          <li className="nav-item"><a className="nav-link" href="#">Enterprise</a></li>
-          <li className="nav-item"><a className="nav-link" href="#">Support</a></li>
-          <li className="nav-item"><a className="nav-link" href="#">Pricing</a></li>
+          <li className="nav-item"><a className="nav-link" href="#" onClick={redirecthome}>Home</a></li>
+          <li className="nav-item"><a className="nav-link" href="#" onClick={redirectmain}>Products</a></li>
+          <li className="nav-item"><a className="nav-link" href="#" onClick={redirectbasket} >Your basket   <span className="badge bg-primary rounded-pill">{orders.length}</span></a></li>
+          <li className="nav-item"><a className="nav-link" href="#" onClick={redirectbill}>Your Orders</a></li>
+
+          {!usermail?.name &&(
+            <>
+          <li className="nav-item"><a className="nav-link" href="#" onClick={redirectsignin}>Signin</a></li>
+
+          </>
+          )}
+
+        {usermail?.name &&(
+            <>
+          <li className="nav-item"><a className="nav-link" href="#" onClick={redirectprofil}>Welcome {usermail.name}</a></li>
+          <li className="nav-item"><a className="nav-link" href="#" onClick={logout}>Logout</a></li>
+          </>
+          )}
+
+
           <li className="nav-item"><a className="nav-link" href="#">
             <svg className="bi" width="24" height="24"></svg>
           </a></li>
@@ -52,8 +174,11 @@ function Beauty(){
   </div>
 </nav>
 
+      
+
+
 <main>
-  <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+  <div className="text-center bg-body-tertiary" style={{marginTop:'-3vh'}}>
     <div className="col-md-6 p-lg-5 mx-auto my-5">
       <h1 className="display-3 fw-bold" onClick={redirecthome}>Welcome to console sales!</h1>
       <h3 className="fw-normal text-muted mb-3" onClick={redirecthome}>Buy anything you want</h3>
@@ -65,16 +190,46 @@ function Beauty(){
         <a className="icon-link" href="#" onClick={redirecthome}>
           Buy
           <svg className="bi"></svg>
+
+
+
         </a>
       </div>
+
+      <input type="text" style={{ marginTop: '2vw', width:'20vw', height:'5vh'}} value={search} onChange={change} placeholder='try "playstation 3"'/>
+
+
     </div>
-    <div className="product-device shadow-sm d-none d-md-block"></div>
-    <div className="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+
+
+    <div className="row align-items-md-stretch" style={{marginTop:'-10vh'}}>
+
+
+{renderprod.map(product => (
+
+
+<div className="col-md-4" onClick={displayproduct}>
+<div className="h-100 p-5 bg-body-tertiary border rounded-3 prod" id={product.id}>
+<h2>{product.title}</h2>
+<p>{product.description}</p>
+ <img src={product.image} className="card-img-top" alt="..." />
+
+</div>
+</div>
+   
+
+))}
+
+</div>
+
+      
+
+
   </div>
 
-  <div className="spinner" onClick={redirecthome}/>
+  {modal ? <div> <Modal modal={modal} setmodal={setmodal} itemshow={itemshow}/> </div> : ""}
 
- 
+
 </main>
 
 </>

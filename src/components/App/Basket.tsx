@@ -16,6 +16,9 @@ function Basket(){
 
     const {adress, setadress} = useContext(UserContext);
 
+    const usermail = JSON.parse(localStorage.getItem("user"));
+
+    // console.log(usermail.name)
 
     const navigate = useNavigate();
 
@@ -23,19 +26,19 @@ function Basket(){
 
     const redirecthome = () => {
 
-        navigate('/');
+        navigate('/main');
 
     };
 
     const redirectbill = () => {
 
-        if (orders.length>0){
+      if((orders.length>0)&&(usermail||email)){
 
 
             navigate('/bill');
 
 
-        } else alert('Your cart is empty');
+        } else {alert('Please check your basket or your email')};
 
 
     };
@@ -106,7 +109,7 @@ function Basket(){
         <>
 
     
-      <div className="row g-5" style={{minWidth:'50vw}'}}>
+      <div className="row g-5" style={{minWidth:'50vw}', marginLeft:'5vw', marginTop:'2vh', marginRight:'5vw'}}>
       <div className="col-md-7 col-lg-8 order-md-last">
         <h4 className="d-flex justify-content-between align-items-center mb-3">
           <span className="text-primary">Your cart</span>
@@ -157,9 +160,9 @@ function Basket(){
           </div>
         </form>
 
-            <button onClick={redirecthome} style={{marginLeft:'10vw'}} >Continue Shopping</button>     
+            <button onClick={redirecthome} style={{marginLeft:'10vw', marginTop:'5vh'}} >Continue Shopping</button>     
             
-            <button onClick={redirectbill} style={{marginLeft:'10vw'}} >Proceed Paiement</button>
+            <button onClick={redirectbill} style={{marginLeft:'10vw', marginTop:'5vh'}} >Proceed Paiement</button>
 
       </div>
 
@@ -195,13 +198,27 @@ function Basket(){
               </div>
             </div>
 
+
+          {!usermail?.name && (
             <div className="col-12">
-              <label htmlFor="email" className="form-label">Email <span className="text-body-secondary">(Optional)</span></label>
+              <label htmlFor="email" className="form-label">Email <span className="text-body-secondary"></span></label>
               <input type="email" className="form-control" id="email" placeholder="you@example.com" value={email} onChange={changemailname}/>
               <div className="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
-            </div>
+            </div>)
+            }
+
+            
+          {usermail?.name && (
+            <div className="col-12">
+              <label htmlFor="email" className="form-label">Email <span className="text-body-secondary"></span></label>
+              <input type="email" className="form-control" id="email" placeholder="you@example.com" value={usermail.name} disabled />
+              <div className="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>)
+            }
 
             <div className="col-12">
               <label htmlFor="address" className="form-label">Address</label>
