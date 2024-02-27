@@ -66,6 +66,12 @@ function Beauty(){
 
     };
 
+    const redirectlogin = () =>{
+
+      navigate('/login');
+
+    };
+
 
     const change = (e) => {
 
@@ -104,6 +110,8 @@ function Beauty(){
       overlay.classList.add("overlay"); // Add the styling class
 
       document.querySelector('main').appendChild(overlay); // Add the overlay to the body
+
+   
 
 
     }
@@ -153,6 +161,7 @@ function Beauty(){
           {!usermail?.name &&(
             <>
           <li className="nav-item"><a className="nav-link" href="#" onClick={redirectsignin}>Signin</a></li>
+          <li className="nav-item"><a className="nav-link" href="#" onClick={redirectlogin}>Login</a></li>
 
           </>
           )}

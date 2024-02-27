@@ -51,6 +51,8 @@ function Home(){
 
         navigate('/');
 
+        window.location.reload();
+
      }
      
      const redirectprofile = () => {

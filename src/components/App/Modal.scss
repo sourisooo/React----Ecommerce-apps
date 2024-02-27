@@ -6,7 +6,7 @@
     z-index: 10; /* Sets the stacking order to appear above other elements */
     /* Additional styles for the popup content can be added here */
     width: 75vw;
-    height: 75vh;
+    height: 85vh;
     background-color: rgba(236, 228, 228, 0.836);
     color:black;
     border-radius: 1em;
@@ -30,6 +30,8 @@
 
     display: flex;
     flex-direction: row;
+    height: 80vh;
+ 
 
 
   }
@@ -37,17 +39,28 @@
 
   .addme{
 
-    max-width: 50vw;
+    max-width: 20vw;
 
 
   }
 
   .modaldescription{
 
-    max-width: 30vw;
+    max-width: 70vw;
+    max-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+
+    // justify-content: space-between;
+
+  }
+
+  .commentscontainer{
+
+    overflow: auto;
+    max-width: 70vw;
+    
+
 
   }

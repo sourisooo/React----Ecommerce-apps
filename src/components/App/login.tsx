@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "./ContextProvider";
 import { useNavigate } from "react-router-dom";
 
 
-function Signin() {
+function Login() {
 
-    const {loguser, setloguser} = useContext(UserContext);
+    const [loguser, setloguser] = useState('');
 
-    const {logpass, setlogpass} = useContext(UserContext);
+    const [logpass, setlogpass] = useState('');
+
 
     const navigate = useNavigate();
 
@@ -16,15 +17,10 @@ function Signin() {
     let keyslist = JSON.parse(localStorage.getItem("keys"));
 
 
+
 const submit = (e) =>{
 
-  let control = userslist?.find(userfromlist => userfromlist.name==loguser);
-
-  console.log(control);
-
-if ((loguser != '')&&(logpass != '')&&(control == undefined)){
-
-    let user = {
+    let logintry = {
 
         name: loguser,
 
@@ -34,43 +30,26 @@ if ((loguser != '')&&(logpass != '')&&(control == undefined)){
 
     e.preventDefault();
 
-    let key = user.name+user.password;
+    // console.log(keyslist);
 
-    console.log(userslist)
-    console.log(keyslist);
+    let key = logintry.name+logintry.password;
 
-    let newkeyslist = [];
-    let newlocalusers = [];
+    let result = keyslist?.find(keyfromlist => keyfromlist==key);
 
-    if (keyslist) {  newkeyslist = [key, ...keyslist];} else {  newkeyslist = [key];}
-
-    console.log(newkeyslist);
-
-    if (userslist) { newlocalusers = [user, ...userslist]} else { newlocalusers = [user]}
-
-    console.log(newlocalusers);
-
-    // localStorage.removeItem("keys");
-    // localStorage.removeItem("users");
-
-    localStorage.setItem("user", JSON.stringify(user));
-    localStorage.setItem("keys", JSON.stringify(newkeyslist));
-    localStorage.setItem("users", JSON.stringify(newlocalusers));
-
-     let keylist = JSON.parse(localStorage.getItem("keys"));
-
-    console.log(userslist)
-    console.log(keyslist);
-    console.log(keylist);
+    console.log(result, result==undefined);
 
 
-    navigate('/');
+    if(result != undefined){
 
-  } else {alert("Please fill all the fields in the correct format or change your mail already in use");}
+    localStorage.setItem("user", JSON.stringify(logintry));
+
+    navigate('/');} else {
+
+        alert("Wrong Credentials");
+
+    };
 
 }
-
-
 
 
 const handleemail = (e) => {
@@ -100,7 +79,7 @@ return(
 <main className="form-signin w-100" style={{maxWidth:'20vw', marginTop:'20vh', marginLeft:'40vw'}}>
   <form onSubmit={submit}>
 
-    <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 className="h3 mb-3 fw-normal">Please Log in</h1>
 
     <div className="form-floating">
       <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" onChange={handleemail}/>
@@ -117,8 +96,7 @@ return(
         Remember me
       </label>
     </div>
-
-    <button className="btn btn-primary w-100 py-2" type="submit" >Sign in</button>
+    <button className="btn btn-primary w-100 py-2" type="submit">Log in</button>
     <p className="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
   </form>
 </main>
@@ -131,4 +109,4 @@ return(
 
 }
 
-export default Signin;
+export default Login;

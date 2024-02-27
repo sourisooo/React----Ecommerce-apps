@@ -30,14 +30,14 @@ function Profile() {
 
         if (e.target.parentElement[3].value !='') {setadress(e.target.parentElement[3].value)};
 
-        navigate('/main');
+        navigate('/');
 
     };
 
     const exit = () => {
 
 
-        navigate('/main');
+        navigate('/');
 
     };
 

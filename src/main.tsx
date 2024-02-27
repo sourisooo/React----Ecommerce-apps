@@ -10,10 +10,11 @@ import Beauty from './components/App/Beauty';
 import Bill from './components/App/Bill';
 import Signin from './components/App/Signin';
 import Profile from './components/App/Profile';
+import Login from './components/App/login';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>  
+
     <BrowserRouter>
     <UserContextProvider> 
     <Routes>
@@ -28,11 +29,13 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
     <Route path="/signin" element={  <Signin />} />
 
+    <Route path="/login" element={  <Login />} />
+
     <Route path="/profil" element={  <Profile />} />
 
 
         </Routes>
         </UserContextProvider>
         </BrowserRouter>
-  </React.StrictMode>
+
 );
