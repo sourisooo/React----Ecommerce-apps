@@ -97,7 +97,7 @@ return(
 
 
     
-<main className="form-signin w-100" style={{maxWidth:'20vw', marginTop:'20vh', marginLeft:'40vw'}}>
+<main className="form-signin w-100" style={{maxWidth:'20vw', marginTop:'20vh', marginLeft:'40vw', border:'solid', borderRadius:'1em', padding:'5em'}}>
   <form onSubmit={submit}>
 
     <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
