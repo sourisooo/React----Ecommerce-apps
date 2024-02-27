@@ -187,11 +187,17 @@ function Modal({modal, setmodal, itemshow}){
 
             <div className="modalcontainer">
 
+            <div className="containerleft">
+
             <div className="addme">
     
             </div>
+
+            <button type='button' style={{marginTop:'7vh', width:'7vw', height:'5vh'}} onClick={addtobasket}>Add to basket</button> 
+
+            </div>
             
-            <div className="modaldescription">   <h2 style={{marginTop:'2vh'}}>Comments</h2>     <button type='button' style={{marginBottom:'2vh', width:'7vw', height:'5vh'}} onClick={addtobasket}>Add to basket</button> 
+            <div className="modaldescription">   <h2 style={{marginTop:'2vh'}}>Comments</h2>    
             
           
             <div className="filters">
