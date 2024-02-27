@@ -44,7 +44,7 @@ function Profile() {
 
 
     return (
-        <div className="col-md-5 col-lg-4" style={{marginLeft:"35vw", marginTop:'20vh'}}>
+        <div className="col-md-5 col-lg-4" style={{marginLeft:"35vw", marginTop:'20vh', border:'solid', borderRadius:'1em', padding:'5em'}}>
         <h4 className="mb-3">Billing address</h4>
         <form className="needs-validation" onSubmit={submit}>
 
