@@ -110,7 +110,7 @@ function Basket(){
 
     
       <div className="row g-5" style={{minWidth:'50vw}', marginLeft:'5vw', marginTop:'2vh', marginRight:'5vw'}}>
-      <div className="col-md-7 col-lg-8 order-md-last">
+      <div className="col-md-7 col-lg-8 order-md-last" style={{border:'solid', borderRadius:'1em', padding:'5em', backgroundColor:'rgba(0, 0, 0, 0.449)'}}>
         <h4 className="d-flex justify-content-between align-items-center mb-3">
           <span className="text-primary">Your cart</span>
           <span className="badge bg-primary rounded-pill">{orders.length}</span>
@@ -167,7 +167,7 @@ function Basket(){
       </div>
 
 
-      <div className="col-md-5 col-lg-4">
+      <div className="col-md-5 col-lg-4" style={{border:'solid', borderRadius:'1em', padding:'5em'}}>
         <h4 className="mb-3">Billing address</h4>
         <form className="needs-validation" >
           <div className="row g-3">
