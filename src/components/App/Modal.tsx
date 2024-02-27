@@ -197,7 +197,8 @@ function Modal({modal, setmodal, itemshow}){
 
             </div>
             
-            <div className="modaldescription">   <h2 style={{marginTop:'2vh'}}>Comments</h2>    
+            <div className="modaldescription">   <h2 style={{marginTop:'2vh'}}>Comments  </h2>    
+          
             
           
             <div className="filters">
@@ -219,9 +220,9 @@ function Modal({modal, setmodal, itemshow}){
 
 
 
-            <input type='text' style={{width:'30vw', height:'10vh', marginBottom:'2vh'}} onChange={e => setcomment(e.target.value)} value={comment} placeholder="Write your comment here..."/>
+            <input type='text' style={{width:'30vw', height:'10vh', marginBottom:'2vh', display:'block'}} onChange={e => setcomment(e.target.value)} value={comment} placeholder="Write your comment here..."/>
 
-            {comment ? (<button type='button' style={{width:'7vw', height:'5vh'}} onClick={addcomment}>Add a comment</button>):""}
+            {comment ? (<button type='button' style={{marginBottom:'2vh', width:'8vw', height:'5vh'}} onClick={addcomment}>Add a comment</button>):""}
 
            
 
